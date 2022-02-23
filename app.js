@@ -1,28 +1,29 @@
-const express = require('express')
+const express = require('express');
+const cors = require('cors');
 const {
-    fetchRouteAlerts,
     fetchRouteAlertsForDate
- } = require('./store.js')
+ } = require('./store.js');
+const { getQueryParamValues } = require('./utils.js');
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT;
 
-app.get('/alerts/:lineId', async (_req, _res) => {
+app.use(cors({
+    origin: process.env.ALLOWED_ORIGINS
+}))
+
+app.get('/alerts', async (_req, _res) => {
+    const params = getQueryParamValues(_req.query);
     try {
-        const limit = _req.query.limit ? _req.query.limit : 10;
-        const dbResponse = await fetchRouteAlerts(_req.params.lineId, limit);
-        _res.send(dbResponse);
+        const results = params.map(async (line) => {
+            const dbResult = await fetchRouteAlertsForDate(line.lineId, line.date);
+            return {lineId: line.lineId, alerts: dbResult};
+        })
+        Promise.all(results).then(res => {
+            _res.send(res);
+        });
     } catch (e) {
-        _res.status(400)
-    }
-});
- 
-app.get('/alerts/:lineId/:date', async (_req, _res) => {
-    try {
-        const dbResponse = await fetchRouteAlertsForDate(_req.params.lineId, _req.params.date);
-        _res.send(dbResponse);
-    } catch (e) {
-        _res.status(400)
+        _res.status(400);
     }
 });
 

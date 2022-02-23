@@ -9,6 +9,7 @@
   },
   "author": "HSLdevcom",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "14.3.2",
     "express": "4.17.2",
     "knex": "1.0.1",
