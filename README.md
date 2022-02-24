@@ -15,5 +15,5 @@ Navigate to ```http://localhost:3001/alerts/31M2M``` for example, proxy should r
 
 ```bash
 $ docker build -t transitlog-alert-proxy .
-$ docker run -d -p 0.0.0.0:3001:3000 transitlog-alert-proxy
+$ docker run -d -p 0.0.0.0:3001:3001 transitlog-alert-proxy
 ```
