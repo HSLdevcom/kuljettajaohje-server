@@ -8,7 +8,8 @@ async function fetchRouteAlertsForDate(lineId, date) {
             .from('alert')
             .whereILike('route_id', lineId)
             .andWhere('valid_from', '<=', date)
-            .andWhere('valid_to', '>=', date);
+            .andWhere('valid_to', '>=', date)
+            .orderBy('valid_from', 'desc');
         return fetchAlertsForLineAndDate;
     } catch (e) {
         console.log(e);
