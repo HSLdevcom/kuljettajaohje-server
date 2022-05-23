@@ -34,5 +34,6 @@ module.exports = {
   PG_TRANSITLOG_CONNECTION_STRING: secretsEnv.PG_TRANSITLOG_CONNECTION_STRING || '',
   PG_JORE_CONNECTION_STRING: secretsEnv.PG_JORE_CONNECTION_STRING || '',
   ALLOWED_ORIGINS: secretsEnv.ALLOWED_ORIGINS || 'https://dev.kartat.hsl.fi/kuljettaja/',
+  ADMIN_PASSWORD: secretsEnv.ADMIN_PASSWORD || '',
   PORT: secretsEnv.PORT|| '3001',
 };

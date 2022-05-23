@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const basicAuth = require("express-basic-auth");
 const path = require("path");
 const { createEngine } = require("express-react-views");
-const { ALLOWED_ORIGINS, PORT } = require('./constants');
+const { ADMIN_PASSWORD, ALLOWED_ORIGINS, PORT } = require('./constants');
 const {
     fetchRouteAlertsForDate,
     fetchUIMessages,
@@ -35,7 +35,7 @@ async function main() {
     app.get('/admin',         
         basicAuth({
             challenge: true,
-            users: { admin: "" },
+            users: { admin: ADMIN_PASSWORD },
         }), (req, res) => {
         res.render("admin");
     });
