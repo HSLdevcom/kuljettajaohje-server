@@ -80,7 +80,7 @@ async function main() {
       });
     
     app.get('/', async (_req, _res) => {
-        _res.send('Transitlog proxy');
+        _res.send('Kuljettajaohje-server');
     });
      
     // Server setup

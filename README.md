@@ -1,5 +1,5 @@
 # kuljettajaohje-server
-Proxy for reading transitlog (Reittiloki) alerts for hsl-map-web-ui
+Backend for hsl-map-web-ui
 
 # Development
 Provide a PostgreSQL connection string in the PG_CONNECTION_STRING environment variable to connect to Transitlog database in an ```.env``` file.

@@ -11,6 +11,6 @@ RUN npm install
 
 COPY . ${WORK}
 
-COPY .env ${WORK}/.env
+COPY .env.production ${WORK}/.env
 
 CMD npm run start
