@@ -1,5 +1,5 @@
 {
-  "name": "transitlog-alert-proxy",
+  "name": "kuljettajaohje-server",
   "version": "1.0.0",
   "description": "Proxy for reading transitlog (Reittiloki) alerts for hsl-map-web-ui",
   "main": "app.js",
