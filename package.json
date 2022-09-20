@@ -1,5 +1,5 @@
 {
-  "name": "transitlog-alert-proxy",
+  "name": "kuljettajaohje-server",
   "version": "1.0.0",
   "description": "Proxy for reading transitlog (Reittiloki) alerts for hsl-map-web-ui",
   "main": "app.js",
@@ -12,7 +12,14 @@
     "cors": "^2.8.5",
     "dotenv": "14.3.2",
     "express": "4.17.2",
+    "express-basic-auth": "^1.2.1",
+    "express-react-views": "^0.11.0",
+    "fs-extra": "^10.1.0",
     "knex": "1.0.1",
-    "pg": "8.7.1"
+    "lodash": "^4.17.21",
+    "pg": "8.7.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "uuid": "^8.3.2"
   }
 }
