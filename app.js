@@ -78,9 +78,9 @@ async function main() {
         await addUIMessage({ message: ui_message });
         res.send(req.body)
       });
-    
-    app.get('/', async (_req, _res) => {
-        _res.send('Kuljettajaohje-server');
+
+    app.get('/health', async (_req, _res) => {
+        _res.sendStatus(200);
     });
      
     // Server setup
