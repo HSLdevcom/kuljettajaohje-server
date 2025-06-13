@@ -31,22 +31,16 @@ async function main() {
     app.use(cors({
         origin: allowedOrigins
     }))
-    
-    app.get('/admin',         
-        basicAuth({
-            challenge: true,
-            users: { admin: ADMIN_PASSWORD },
-        }), (req, res) => {
-        res.render("admin");
-    });
 
-    app.get('/admin', (req, res) => {
-        res.render("admin");
-    });
-
-    app.engine("jsx", createEngine());
-    app.set("view engine", "jsx");
-    app.set("views", path.join(__dirname, "views"));
+    app.get('/UIMessages', async (req, res) => {
+        try {
+            const dbResult = await fetchUIMessages();
+            res.send(dbResult);
+        } catch (e) {
+            console.log(e);
+            res.send('failed')
+        }
+    })
 
     app.get('/alerts', async (_req, _res) => {
         const params = getQueryParamValues(_req.query);
@@ -62,25 +56,30 @@ async function main() {
             _res.status(400);
         }
     });
+
+    app.get('/health', async (_req, _res) => {
+        _res.sendStatus(200);
+    });
+
+    // ###### Authorized endpoints ######
+
+    app.use(basicAuth({
+            challenge: true,
+            users: { admin: ADMIN_PASSWORD },
+        }));
     
-    app.get('/UIMessages', async (req, res) => {
-        try {
-            const dbResult = await fetchUIMessages();
-            res.send(dbResult);
-        } catch (e) {
-            console.log(e);
-            res.send('failed')
-        }
-    })
+    app.get('/admin', (req, res) => {
+        res.render("admin");
+    });
+
+    app.engine("jsx", createEngine());
+    app.set("view engine", "jsx");
+    app.set("views", path.join(__dirname, "views"));
 
     app.post('/UIMessages', async (req, res) => {
         const { ui_message } = req.body;
         await addUIMessage({ message: ui_message });
         res.send(req.body)
-      });
-
-    app.get('/health', async (_req, _res) => {
-        _res.sendStatus(200);
     });
      
     // Server setup
