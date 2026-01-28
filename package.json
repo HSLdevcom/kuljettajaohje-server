@@ -8,6 +8,7 @@
     "start": "node -r dotenv/config app.js"
   },
   "author": "HSLdevcom",
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "14.3.2",
