@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:20-alpine
 
 ENV WORK /opt/kuljettajaohje-server
 
@@ -6,8 +6,8 @@ RUN mkdir -p ${WORK}
 WORKDIR ${WORK}
 
 # Install app dependencies
-COPY package.json ${WORK}/
-RUN npm install
+COPY package.json package-lock.json ${WORK}/
+RUN npm ci
 
 COPY . ${WORK}
 

@@ -1,6 +1,6 @@
 {
   "name": "kuljettajaohje-server",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Backend for hsl-map-web-ui",
   "main": "app.js",
   "scripts": {
@@ -24,8 +24,18 @@
     "uuid": "^8.3.2"
   },
   "resolutions": {
-    "minimatch": "9.0.7",
+    "minimatch": "9.0.9",
     "lodash": "4.18.1",
-    "path-to-regexp": "0.1.13"
+    "path-to-regexp": "0.1.13",
+    "browserslist": "4.28.7",
+    "@babel/plugin-transform-modules-systemjs": "7.29.4",
+    "js-cookie": "3.0.7"
+  },
+  "overrides": {
+    "minimatch": "9.0.9",
+    "path-to-regexp": "0.1.13",
+    "browserslist": "4.28.7",
+    "@babel/plugin-transform-modules-systemjs": "7.29.4",
+    "js-cookie": "3.0.7"
   }
 }
